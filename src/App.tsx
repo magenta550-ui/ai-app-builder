@@ -4,7 +4,16 @@ import { useChat } from './hooks/useChat';
 import './App.css';
 
 function App() {
-  const { messages, isGenerating, previewCode, sendMessage } = useChat();
+  const {
+    messages,
+    isGenerating,
+    previewCode,
+    sendMessage,
+    apiKey,
+    saveApiKey,
+    streamingText,
+    stopGenerating,
+  } = useChat();
 
   return (
     <div className="app-layout">
@@ -12,6 +21,10 @@ function App() {
         messages={messages}
         isGenerating={isGenerating}
         onSend={sendMessage}
+        apiKey={apiKey}
+        onApiKeyChange={saveApiKey}
+        streamingText={streamingText}
+        onStop={stopGenerating}
       />
       <div className="divider" />
       <PreviewPanel code={previewCode} />
